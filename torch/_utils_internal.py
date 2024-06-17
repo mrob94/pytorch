@@ -129,7 +129,7 @@ def log_torchscript_usage(api: str):
 
 
 def check_if_torch_exportable():
-    return False
+    return True
 
 
 def log_torch_jit_trace_exportability(

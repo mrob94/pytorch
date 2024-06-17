@@ -742,12 +742,14 @@ class TS2EPConverter:
         self, gm: torch.fx.GraphModule, tensor_constants: Dict[str, torch.Tensor]
     ):
         # TODO: adjust input orders to match GraphSignature convention
+        print("Before retracing")
         ep = torch.export._trace._export(
             gm,
             self.sample_args,
             strict=False,
             pre_dispatch=True,
         )
+        print("After retracing")
 
         # Post-processing to make sure the ExportedProgram states are correct.
         # Because during conversion, we set tensor constants as GetAttr,
